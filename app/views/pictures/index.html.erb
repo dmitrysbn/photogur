@@ -11,4 +11,17 @@
   <% end %>
 </h3>
 
-<%= render 'pictures', pictures: @older_pictures %>
+<section>
+  <h4>2018:</h4>
+  <%= render 'pictures', pictures: (Picture.pictures_created_in(2018) - @most_recent_pictures) %>
+</section>
+
+<section>
+  <h4>2017:</h4>
+  <%= render 'pictures', pictures: Picture.pictures_created_in(2017) %>
+</section>
+
+<section>
+  <h4>2016:</h4>
+  <%= render 'pictures', pictures: Picture.pictures_created_in(2016) %>
+</section>
