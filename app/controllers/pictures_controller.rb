@@ -1,7 +1,9 @@
 class PicturesController < ApplicationController
 
   def index
-    @pictures = Picture.all
+    @most_recent_pictures = Picture.most_recent_three
+    @older_pictures = Picture.created_before(Time.now - 3600 * 24 * 30)
+    @number_of_older_pictures = @older_pictures.size
   end
 
   def show

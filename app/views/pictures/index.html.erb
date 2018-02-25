@@ -1,10 +1,14 @@
 <h1>Pictures</h1>
 <%= link_to("New Picture", "/pictures/new") %>
 
-<% @pictures.each do |picture| %>
-  <p><%= picture.title %>, <%= picture.artist %></p>
-  
-  <!-- <img src="<%= picture.url %>" alt="<%= picture.title %>" -->
+<%= render 'pictures', pictures: @most_recent_pictures %>
 
-  <%= link_to(image_tag(picture.url), "/pictures/#{picture.id}") %>
-<% end %>
+<h3>
+  <% if @number_of_older_pictures == 1 %>
+    There is one older picture:
+  <% else %>
+    There are <%= @number_of_older_pictures %> older pictures:
+  <% end %>
+</h3>
+
+<%= render 'pictures', pictures: @older_pictures %>
