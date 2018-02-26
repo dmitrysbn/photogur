@@ -6,6 +6,8 @@ class Picture < ApplicationRecord
 
   validates :url, uniqueness: true
 
+  validates :url, format: { with: %r{http://}, message: "must start with 'http://'" }
+
   def self.newest_first
     Picture.order("created_at DESC")
   end
